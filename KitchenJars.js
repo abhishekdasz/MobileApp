@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    marginTop:300,
   },
   itemContainer: {
     marginBottom: 16,

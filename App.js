@@ -26,7 +26,7 @@ export default function App() {
       {data.map((item) => (
         <View key={item.id} style={styles.itemContainer}>
           <Image source={{ uri: item.mediaUrl }} style={styles.image} />
-          <Text style={styles.itemText}>{item.name}</Text>
+          <Text style={styles.itemText}>{item.name.slice(0,20)}</Text>
           <Text style={styles.itemText}>Price: ₹{item.variants[0].sellingPrice}</Text>
         </View>
       ))}
@@ -37,19 +37,23 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 16,
+    // flex: 1,
+    padding: 10,
+    flexDirection:'row',
+    flexWrap:'wrap',
+    marginTop:30,
   },
   itemContainer: {
     marginBottom: 16,
+    width:'50%',
+    // gap:10
   },
   image: {
-    width: '100%',
-    height: 200,
+    width: '95%',
+    height: 180,
     resizeMode: 'cover',
   },
   itemText: {
-    fontSize: 16,
-    marginTop: 8,
+    fontSize: 15,
   },
 });
