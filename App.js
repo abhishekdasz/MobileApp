@@ -27,6 +27,7 @@ export default function App() {
       {data.map((item, index) => (
         <View key={item.id} style={styles.itemContainer}>
           <Image source={{ uri: item.mediaUrl }} style={styles.image} />
+          <Text style={styles.category}>{item.category[0].name}</Text>
           <Text style={styles.itemText}>{item.name.slice(0,20)}</Text>
           <Text style={styles.itemText}>₹{item.variants[0].sellingPrice}</Text>
           {index % 2 === 0 && (
@@ -61,12 +62,16 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     borderRadius:5,
   },
+  category:{
+    fontWeight:'bold',
+    textTransform:'uppercase',
+  },
   itemText: {
     fontSize: 15,
   },
   new: {
     position:'absolute',
-    bottom:46,
+    bottom:66,
     backgroundColor:'#0f172a',
     color:"white",
     marginLeft:8,
