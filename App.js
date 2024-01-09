@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import heartImage from './assets/heart.png';
 
 export default function App() {
   const [data, setData] = useState([]);
@@ -23,11 +24,17 @@ export default function App() {
   return (
     <ScrollView>
     <View style={styles.container}>
-      {data.map((item) => (
+      {data.map((item, index) => (
         <View key={item.id} style={styles.itemContainer}>
           <Image source={{ uri: item.mediaUrl }} style={styles.image} />
           <Text style={styles.itemText}>{item.name.slice(0,20)}</Text>
-          <Text style={styles.itemText}>Price: ₹{item.variants[0].sellingPrice}</Text>
+          <Text style={styles.itemText}>₹{item.variants[0].sellingPrice}</Text>
+          {index % 2 === 0 && (
+            <Text style={styles.new}>
+              <Text> New </Text>
+            </Text>
+          )}
+          <Image source={heartImage} style={styles.fav} />
         </View>
       ))}
     </View>
@@ -52,8 +59,24 @@ const styles = StyleSheet.create({
     width: '95%',
     height: 180,
     resizeMode: 'cover',
+    borderRadius:5,
   },
   itemText: {
     fontSize: 15,
+  },
+  new: {
+    position:'absolute',
+    bottom:46,
+    backgroundColor:'black',
+    color:"white",
+    marginLeft:8,
+    padding:2
+  },
+  fav:{
+    height:20,
+    width:20,
+    position:'absolute',
+    right:15,
+    top:8,
   },
 });
